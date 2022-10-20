@@ -7,17 +7,26 @@ export function useGetBooks() {
     const [data, setData] = useState(null)
     const [error, setError] = useState(null)
 
-    async function getBooks() {
+    console.log(data)
+
+    async function getBooks(provider = '') {
         try {
             setError(null)
             setLoading(true)
-
-            let arr = []
-            for (let obj in books) {
-                const book = {id: obj, ...books[obj]}
-                arr.push(book)
-            }
-            setData(arr)
+            const response = await new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    let arr = []
+                    for (let obj in books) {
+                        const book = {id: obj, ...books[obj]}
+                        arr.push(book)
+                    }
+                    resolve(arr)
+                }, 500)
+            }).then((data) => {
+                if (provider) data = data.filter(book => book.provider === provider)
+                return data
+            })
+            setData(response)
             setLoading(false)
         } catch (err) {
             if (err instanceof AxiosError) {

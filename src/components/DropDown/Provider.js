@@ -7,12 +7,12 @@ import Select from '@mui/material/Select';
 import {setProviderSlice, setSkip} from "../../store/app.slice";
 import {useDispatch} from "react-redux";
 
-export function BasicSelectProvider() {
+export function BasicSelectProvider({getBooks}) {
     const [provider, setProvider] = React.useState('');
     const dispatch = useDispatch()
 
     const handleChange = (event) => {
-        dispatch(setProviderSlice(event.target.value))
+        getBooks(event.target.value)
         dispatch(setSkip(0))
         setProvider(event.target.value);
     };

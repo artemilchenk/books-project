@@ -17,16 +17,14 @@ export function List() {
     useEffect(() => {
         if (currencyState) {
             setBooks(data?.filter(book => book.provider.includes(providerState) && Object.keys(book.real).includes(currencyState)))
-        } else {
-            setBooks(data?.filter(book => book.provider.includes(providerState)))
         }
-    }, [data, providerState, currencyState])
+    }, [data, currencyState])
 
     return (
         <div className={styles.list}>
-            <Navigate/>
+            <Navigate getBooks={getBooks}/>
             <div className={styles.items}>
-                {books?.sort((a, b) => a.collections.popularity - b.collections.popularity).slice(skip, skip + 12).map(book =>
+                {data?.sort((a, b) => a.collections.popularity - b.collections.popularity).slice(skip, skip + 12).map(book =>
                     <Book
                         key={book.id}
                         bookOne={book}/>
