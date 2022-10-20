@@ -15,8 +15,11 @@ export function List() {
     const currencyState = useSelector(state => state.app.currency)
 
     useEffect(() => {
-        setBooks(data?.filter(book => book.provider.includes(providerState)))
-        if(currencyState) setBooks(data?.filter(book => book.provider.includes(providerState) && Object.keys(book.real).includes(currencyState)))
+        if (currencyState) {
+            setBooks(data?.filter(book => book.provider.includes(providerState) && Object.keys(book.real).includes(currencyState)))
+        } else {
+            setBooks(data?.filter(book => book.provider.includes(providerState)))
+        }
     }, [data, providerState, currencyState])
 
     return (
