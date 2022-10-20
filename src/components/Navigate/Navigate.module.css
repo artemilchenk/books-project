@@ -1,0 +1,11 @@
+.navigate {
+  align-self: start;
+  display: flex;
+  justify-content: start;
+  padding: 50px;
+}
+.navigate .drop {
+  margin: 12px;
+}
+
+/*# sourceMappingURL=Navigate.module.css.map */

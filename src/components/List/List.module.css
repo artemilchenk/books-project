@@ -1,0 +1,20 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.items {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.items__button {
+  background-color: gray;
+  padding: 5px 15px;
+  width: 200px;
+}
+
+/*# sourceMappingURL=List.module.css.map */
